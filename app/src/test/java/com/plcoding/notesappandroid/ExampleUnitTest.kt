@@ -1,4 +1,4 @@
-package com.plcoding.notesappandroid
+package com.notesappandroid
 
 import org.junit.Test
 

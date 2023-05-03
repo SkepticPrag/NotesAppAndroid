@@ -1,9 +1,9 @@
-package com.plcoding.notesappandroid
+package com.notesappandroid
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.plcoding.notesappandroid.ui.theme.NotesAppAndroid
+import com.notesappandroid.ui.theme.NotesAppAndroid
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

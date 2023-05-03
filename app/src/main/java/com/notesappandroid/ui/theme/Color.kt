@@ -1,4 +1,4 @@
-package com.plcoding.notesappandroid.ui.theme
+package com.notesappandroid.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
