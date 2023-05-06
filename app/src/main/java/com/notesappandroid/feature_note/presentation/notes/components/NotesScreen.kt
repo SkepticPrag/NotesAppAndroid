@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import kotlinx.coroutines.launch
 
 
 @Composable
@@ -69,13 +70,42 @@ fun NotesScreen(
                     enter = fadeIn() + slideInVertically(),
                     exit = fadeOut() + slideOutVertically()
                 ) {
-                  OrderSection(
-                      modifier = Modifier.fillMaxWidth().padding(vertical =16.dp),
-                      noteOrder = state.noteOrder,
-                      onOrderChange = {
-                          viewModel.onEvent(NotesEvent.Order(it))
-                      }
-                  )
+                    OrderSection(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 16.dp),
+                        noteOrder = state.noteOrder,
+                        onOrderChange = {
+                            viewModel.onEvent(NotesEvent.Order(it))
+                        }
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(16.dp))
+                LazyColumn(modifier = Modifier.fillMaxSize())
+                {
+                    items(state.notes)
+                    {
+                            note -> NoteItem(
+                        note = note,
+                        modifier = Modifier.fillMaxWidth().clickable
+                        {
+
+                        },
+                        onDeleteClick = {
+                            viewModel.onEvent(NotesEvent.DeleteNote(note))
+                            scope.launch {
+                                val result = scaffoldState.snackbarHostState.showSnackbar(
+                                    message = "Note Deleted",
+                                    actionLabel = "Undo"
+                                )
+                                if(result == SnackbarResult.ActionPerformed){
+                                    viewModel.onEvent(NotesEvent.RestoreNote)
+                                }
+                            }
+                        }
+                    )
+                    }
                 }
             }
         }
