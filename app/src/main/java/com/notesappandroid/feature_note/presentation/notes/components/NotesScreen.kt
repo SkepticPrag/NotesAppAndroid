@@ -88,10 +88,12 @@ fun NotesScreen(
                     {
                             note -> NoteItem(
                         note = note,
-                        modifier = Modifier.fillMaxWidth().clickable
-                        {
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable
+                            {
 
-                        },
+                            },
                         onDeleteClick = {
                             viewModel.onEvent(NotesEvent.DeleteNote(note))
                             scope.launch {
@@ -105,6 +107,7 @@ fun NotesScreen(
                             }
                         }
                     )
+                        Spacer(modifier = Modifier.height(16.dp))
                     }
                 }
             }
