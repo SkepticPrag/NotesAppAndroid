@@ -63,6 +63,20 @@ fun NotesScreen(
                         contentDescription = "Sort"
                     )
                 }
+
+                AnimatedVisibility(
+                    visible = state.isOrderSectionVisible,
+                    enter = fadeIn() + slideInVertically(),
+                    exit = fadeOut() + slideOutVertically()
+                ) {
+                  OrderSection(
+                      modifier = Modifier.fillMaxWidth().padding(vertical =16.dp),
+                      noteOrder = state.noteOrder,
+                      onOrderChange = {
+                          viewModel.onEvent(NotesEvent.Order(it))
+                      }
+                  )
+                }
             }
         }
     }
