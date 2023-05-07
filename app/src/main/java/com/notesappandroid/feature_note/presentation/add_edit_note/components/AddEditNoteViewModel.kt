@@ -21,10 +21,10 @@ class AddEditNoteViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ): ViewModel(){
 
-    private val _noteTitle = mutableStateOf(NoteTextFieldState(hint = "Enter Title"))
+    private val _noteTitle = mutableStateOf(NoteTextFieldState(hint = "Enter Title..."))
     val noteTitle:State<NoteTextFieldState> = _noteTitle
 
-    private val _noteContent = mutableStateOf(NoteTextFieldState(hint = "Enter Content"))
+    private val _noteContent = mutableStateOf(NoteTextFieldState(hint = "Enter Content..."))
     val noteContent:State<NoteTextFieldState> = _noteContent
 
     private val _noteColor = mutableStateOf(Note.noteColors.random().toArgb())
