@@ -36,8 +36,7 @@ class AddEditNoteViewModel @Inject constructor(
     private var currentNoteId:Int? = null
 
     init {
-        savedStateHandle.get<Int>("noteId")?.let{
-                noteId ->
+        savedStateHandle.get<Int>("noteId")?.let{noteId ->
             if(noteId != -1)
             {
                 viewModelScope.launch {
@@ -92,9 +91,10 @@ class AddEditNoteViewModel @Inject constructor(
                                 id = currentNoteId
                             )
                         )
+                        _eventFlow.emit(UiEvent.SaveNote)
                     } catch (e: InvalidNoteException) {
                         _eventFlow.emit(
-                            UiEvent.ShowSnackBar(message = "Couldn't save note")
+                            UiEvent.ShowSnackBar(message = e.message?: "Couldn't save note")
                         )
                     }
                 }

@@ -12,12 +12,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 
 @Composable
-
 fun TransparentHintTextField(
     text: String,
     hint: String,
     modifier: Modifier = Modifier,
-    isHintInvisible: Boolean = true,
+    isHintVisible: Boolean = true,
     onValueChange:(String) -> Unit,
     textStyle: TextStyle = TextStyle(),
     singleLine: Boolean = false,
@@ -35,7 +34,7 @@ fun TransparentHintTextField(
             textStyle = textStyle,
             modifier = Modifier.fillMaxWidth().onFocusChanged { onFocusChange(it) }
         )
-        if(isHintInvisible)
+        if(isHintVisible)
         {
             Text(text = hint, style = textStyle, color = Color.DarkGray)
         }

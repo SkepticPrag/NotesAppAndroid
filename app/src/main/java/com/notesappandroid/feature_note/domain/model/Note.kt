@@ -18,4 +18,4 @@ data class Note(
     }
 }
 
-class InvalidNoteException(messsage:String):Exception(messsage)
+class InvalidNoteException(message:String):Exception(message)
