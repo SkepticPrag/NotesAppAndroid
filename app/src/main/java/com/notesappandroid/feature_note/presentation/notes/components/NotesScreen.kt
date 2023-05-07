@@ -54,7 +54,7 @@ fun NotesScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Your notes dude",
+                    text = "Tus notas capo",
                     style = MaterialTheme.typography.h4
                 )
                 IconButton(
